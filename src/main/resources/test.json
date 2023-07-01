@@ -1,0 +1,17 @@
+{
+  "accountId": null,
+  "name": "ClarKent",
+  "balance": 17927.091,
+  "phoneNumber": "567-098-1782",
+  "aliasName": "supes",
+  "payments": [
+    {
+      "paymentId": null,
+      "message": "$170 credited"
+    },
+{
+      "paymentId": null,
+      "message": "$190 credited"
+    }
+  ]
+}

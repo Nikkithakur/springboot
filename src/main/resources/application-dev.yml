@@ -1,0 +1,25 @@
+server:
+  port: 9091
+  servlet:
+    context-path: /sb-dev
+  
+spring:
+  application:
+    name: sb-dev
+    
+  h2:
+    console:
+      path: /h2-dev
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password: sa
+
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true

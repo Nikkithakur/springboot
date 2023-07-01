@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+
+	<property resource="application.properties" />
+	<property name="LOG_PATTERN"
+		value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n" />
+
+	<appender name="ConsoleAppender"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder
+			class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout
+				class="ch.qos.logback.classic.PatternLayout">
+				<pattern>${LOG_PATTERN}</pattern>
+			</layout>
+		</encoder>
+	</appender>
+
+	<appender name="FileAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${logpath}/app.log</file>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${logpath}/app-%d{yyyy-MM-dd}-%i.log.gz
+			</fileNamePattern>
+			<!-- 3 days files to keep -->
+			<maxHistory>3</maxHistory>
+			<!-- each archived file size -->
+			<maxFileSize>1KB</maxFileSize>
+			<!-- if total files size > 5KB, it will delete old archived file -->
+			<totalSizeCap>10KB</totalSizeCap>
+		</rollingPolicy>
+		<encoder
+			class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+			<layout
+				class="ch.qos.logback.classic.PatternLayout">
+				<pattern>${LOG_PATTERN}</pattern>
+			</layout>
+		</encoder>
+	</appender>
+
+	<root level="info">
+		<appender-ref ref="ConsoleAppender" />
+		<appender-ref ref="FileAppender" />
+	</root>
+
+</configuration>
